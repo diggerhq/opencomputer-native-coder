@@ -16,7 +16,7 @@
     "@opencomputer/agent": "0.7.5"
   },
   "devDependencies": {
-    "@opencomputer/cli": "0.7.14",
+    "@opencomputer/cli": "0.7.17",
     "@types/node": "^24.0.0",
     "typescript": "^5.9.0"
   },
