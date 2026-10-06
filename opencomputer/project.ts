@@ -1,4 +1,4 @@
 export default {
-  name: "Rufus",
-  agents: ["rufus"],
+  name: "Durable Coder",
+  agents: ["coder"],
 };

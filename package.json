@@ -1,5 +1,5 @@
 {
-  "name": "opencomputer-rufus",
+  "name": "opencomputer-durable-coder-template",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -8,6 +8,8 @@
     "doctor": "opencomputer doctor --json",
     "typecheck": "tsc --noEmit",
     "check": "npm run typecheck && npm run doctor",
+    "template:validate": "opencomputer template validate . --repository-url https://github.com/diggerhq/opencomputer-native-coder",
+    "template:build": "opencomputer template build .",
     "opencomputer": "opencomputer"
   },
   "dependencies": {

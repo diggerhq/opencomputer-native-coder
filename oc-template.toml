@@ -1,0 +1,10 @@
+schema = 1
+
+[template]
+name = "Durable Cloudflare Coder"
+description = "A durable coding agent that edits connected GitHub repositories and verifies branches through repository-owned non-production Cloudflare workflows."
+documentation = "https://github.com/diggerhq/opencomputer-native-coder"
+default_project_name = "durable-cloudflare-coder"
+
+[template.connections.github]
+description = "Select only the GitHub repositories this coding agent is allowed to read and change."
