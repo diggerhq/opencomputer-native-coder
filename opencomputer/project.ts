@@ -1,4 +1,4 @@
 export default {
   name: "OpenComputer Coder",
-  agents: ["coder"],
+  agents: ["coder", "verifier"],
 };

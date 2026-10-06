@@ -2,7 +2,7 @@ schema = 1
 
 [template]
 name = "OpenComputer Coder"
-description = "The first OpenComputer agentic software factory template: a coding agent that edits connected repositories and verifies changes through repository-owned workflows."
+description = "The first OpenComputer agentic software factory template: a coding agent that builds changes and a verifier that proves pull requests work."
 documentation = "https://github.com/diggerhq/opencomputer-native-coder"
 default_project_name = "opencomputer-coder"
 
@@ -11,4 +11,4 @@ agent = "coder"
 prompt = "Welcome me to OpenComputer Coder. Tell me to open the Connections tab, connect GitHub, select the repositories I want this agent to access, and then start a new session with my first coding task. Do not call any tools."
 
 [template.connections.github]
-description = "Select only the GitHub repositories this coding agent is allowed to read and change."
+description = "Select only the GitHub repositories the coder and verifier are allowed to access."

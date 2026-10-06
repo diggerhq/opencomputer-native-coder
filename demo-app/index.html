@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Verifier demo</title>
+    <style>
+      :root { color-scheme: dark; font-family: ui-sans-serif, system-ui, sans-serif; }
+      body { min-height: 100vh; margin: 0; display: grid; place-items: center; background: #11100e; color: #f4f0e8; }
+      main { width: min(34rem, calc(100% - 3rem)); padding: 2.5rem; border: 1px solid #3b3730; border-radius: 1.25rem; background: #1b1916; box-shadow: 0 1.5rem 4rem #0008; }
+      p { color: #bbb3a6; line-height: 1.6; }
+      button { margin-top: 1rem; padding: .8rem 1rem; border: 0; border-radius: .7rem; background: #e6ff73; color: #17190b; font: inherit; font-weight: 700; cursor: pointer; }
+      output { display: block; margin-top: 1.25rem; padding: .8rem 1rem; border-radius: .7rem; background: #25221d; color: #ffce73; }
+      output.ready { color: #b8f7a8; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p>OpenComputer verifier demo</p>
+      <h1>Can an agent prove the change works?</h1>
+      <p>The browser test must observe the initial state, exercise the control, and verify the resulting user-visible state.</p>
+      <button type="button" id="run-check">Run self-check</button>
+      <output id="status" aria-live="polite">Waiting for verification</output>
+    </main>
+    <script>
+      document.querySelector("#run-check").addEventListener("click", () => {
+        const status = document.querySelector("#status");
+        status.textContent = "Ready for verification";
+        status.classList.add("ready");
+      });
+    </script>
+  </body>
+</html>
