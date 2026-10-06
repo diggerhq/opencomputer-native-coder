@@ -8,7 +8,7 @@ default_project_name = "opencomputer-coder"
 
 [template.first_run]
 agent = "coder"
-prompt = "Verify GitHub access, list the repositories available to this project, and report setup readiness. Do not clone repositories, change files, push, or deploy."
+prompt = "Welcome me to OpenComputer Coder. Tell me to open the Connections tab, connect GitHub, select the repositories I want this agent to access, and then start a new session with my first coding task. Do not call any tools."
 
 [template.connections.github]
 description = "Select only the GitHub repositories this coding agent is allowed to read and change."

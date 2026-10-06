@@ -20,7 +20,7 @@ const github = defineConnection({
 });
 
 export default function CoderAgent() {
-  useModel("anthropic/claude-sonnet-4.6");
+  useModel("anthropic/claude-sonnet-5");
   useConnection(github);
   useTool("shell");
 

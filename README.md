@@ -64,10 +64,10 @@ repositories this agent should be able to change. The App may write repository
 contents and pull requests, read checks, and dispatch GitHub Actions, so keep
 the selection narrow.
 
-After installation, OpenComputer opens the Coder's Debug playground and runs a
-read-only setup check. The first run verifies GitHub access and reports the
-repositories available to the project without cloning, changing, pushing, or
-deploying anything.
+After installation, OpenComputer opens the Coder's Debug playground with a
+short welcome. It points you to the Connections tab to connect GitHub and
+select the repositories the agent may access, then asks you to start a new
+session with your first coding task. This welcome does not call any tools.
 
 ## Develop and validate the template
 
