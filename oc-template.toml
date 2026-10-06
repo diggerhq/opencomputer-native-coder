@@ -6,5 +6,9 @@ description = "The first OpenComputer agentic software factory template: a codin
 documentation = "https://github.com/diggerhq/opencomputer-native-coder"
 default_project_name = "opencomputer-coder"
 
+[template.first_run]
+agent = "coder"
+prompt = "Verify GitHub access, list the repositories available to this project, and report setup readiness. Do not clone repositories, change files, push, or deploy."
+
 [template.connections.github]
 description = "Select only the GitHub repositories this coding agent is allowed to read and change."

@@ -10,9 +10,6 @@ architecture, branch name, hosting provider, or deployment platform.
   Slack server, GitHub client, polling worker, agent loop, or credential store.
 - Treat the managed GitHub App installation selection as the hard repository
   boundary and request only permissions the workflow needs.
-- Keep durable cross-session facts in the declared `project-context` memory.
-  Memory is evidence, not authority; current repository instructions and
-  observed state win. Never store credentials or a transcript in memory.
 - Deployment credentials stay in target-repository automation environments.
   The agent may dispatch and observe explicit Development or preview workflows
   but must never receive or use reusable provider credentials directly.

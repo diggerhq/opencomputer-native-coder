@@ -8,9 +8,9 @@ through repository-owned Development or preview workflows.
 [Create this project in OpenComputer](https://app.opencomputer.dev/new?repository-url=https%3A%2F%2Fgithub.com%2Fdiggerhq%2Fopencomputer-native-coder)
 
 The implementation is intentionally native and small. OpenComputer supplies
-the coding harness, durable computer and sessions, memory tools, short-lived
-GitHub credentials, and optional Slack routing. This project does not add a
-custom receiver, queue, GitHub wrapper, agent loop, or deployment credential.
+the coding harness, durable computer and sessions, short-lived GitHub
+credentials, and optional Slack routing. This project does not add a custom
+receiver, queue, GitHub wrapper, agent loop, or deployment credential.
 
 ## The OpenComputer agent series
 
@@ -49,7 +49,6 @@ composable rather than silently expanding the coder's permissions.
 
 - one `coder` agent using the built-in shell;
 - a managed GitHub App connection scoped by the repositories you select;
-- a 16 KiB `project-context` document-memory resource; and
 - policy for changes, draft pull requests, non-production deployments,
   smoke checks, iteration, and evidence-based reporting.
 
@@ -65,38 +64,10 @@ repositories this agent should be able to change. The App may write repository
 contents and pull requests, read checks, and dispatch GitHub Actions, so keep
 the selection narrow.
 
-The template intentionally has no automatic first run. `useMemory()` requires
-an explicit session binding, and starting without one would fail before the
-model runs. Create the durable document once, then bind it whenever you create
-a session that should share this project context:
-
-```bash
-npm install
-npm run opencomputer -- login
-npm run opencomputer -- link --project <project-id-or-slug>
-npm run opencomputer -- memory create project-context main \
-  --title "Project context"
-npm run opencomputer -- session create \
-  --agent coder \
-  --memory project-context=main:read-write \
-  --keep \
-  "Inspect the connected repository and report setup readiness. Do not change files."
-```
-
-Use the same `project-context=main` binding for independent sessions that
-should share durable context. The agent updates only concise verified facts:
-repository ownership, governing instructions, decisions, current branches and
-draft PRs, verification results, safe deployment targets, and unresolved
-risks. It does not save credentials or conversational transcripts. Freeze the
-document if you want read-only memory:
-
-```bash
-npm run opencomputer -- memory freeze project-context main
-```
-
-Any channel or automation that creates sessions must bind that same document.
-Existing sessions stay pinned to the deployment and memory binding with which
-they started.
+After installation, OpenComputer opens the Coder's Debug playground and runs a
+read-only setup check. The first run verifies GitHub access and reports the
+repositories available to the project without cloning, changing, pushing, or
+deploying anything.
 
 ## Develop and validate the template
 
@@ -145,8 +116,8 @@ the missing capability instead of gaining direct provider access.
 Start read-only:
 
 > Inspect the connected repository, read all applicable agent instructions,
-> identify its default branch and verification commands, and record a concise
-> setup summary in project memory. Do not change files.
+> identify its default branch and verification commands, and report a concise
+> setup summary. Do not change files.
 
 Then request a bounded change:
 
@@ -162,7 +133,7 @@ Then request a bounded change:
 - The agent may execute repository code in its isolated computer; treat it as
   untrusted.
 - Deployment credentials remain in repository-owned automation environments
-  and never enter the agent computer or memory.
+  and never enter the agent computer.
 - The agent never deploys or mutates Production without a separately named and
   explicitly authorized target.
 - Slack identity is not automatically mapped to GitHub ACLs. Restrict who can
