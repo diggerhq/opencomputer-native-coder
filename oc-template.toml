@@ -2,7 +2,7 @@ schema = 1
 
 [template]
 name = "OpenComputer Coder"
-description = "A durable coding agent that edits connected GitHub repositories and verifies branches through repository-owned non-production Cloudflare workflows."
+description = "The first OpenComputer agentic software factory template: a coding agent that edits connected repositories and verifies changes through repository-owned workflows."
 documentation = "https://github.com/diggerhq/opencomputer-native-coder"
 default_project_name = "opencomputer-coder"
 

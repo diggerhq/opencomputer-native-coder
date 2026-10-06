@@ -12,6 +12,39 @@ the coding harness, durable computer and sessions, memory tools, short-lived
 GitHub credentials, and optional Slack routing. This project does not add a
 custom receiver, queue, GitHub wrapper, agent loop, or Cloudflare credential.
 
+## The OpenComputer agent series
+
+OpenComputer Coder is the first in a series of reusable agent templates for an
+agentic software factory. The series adapts the pattern shown for OpenAI's
+internal engineering workflow into components that teams can install, inspect,
+and operate on OpenComputer. It does not assume that every team has the same
+repositories, infrastructure, review policy, or production controls.
+
+The goal is not one all-powerful agent. Each template owns a clear part of the
+software lifecycle and receives only the tools and authority that part needs:
+
+```mermaid
+flowchart LR
+    H[Human defines outcome] --> C[OpenComputer Coder]
+    X[Code, docs, and connected systems] --> C
+    C --> CI[Build and test]
+    CI --> R[Specialist agent review]
+    R --> D[Risk-aware deploy]
+    D --> P[Production observation]
+    P --> O[Performance and incident agents]
+    O -. verified findings and proposed fixes .-> C
+    CI -. failures .-> C
+    R -. review findings .-> C
+```
+
+This repository ships the first component: the coder that turns a bounded
+outcome into a tested branch and draft pull request, then verifies it through a
+safe repository-owned preview workflow when one exists. The broader series
+will cover build and test orchestration, parallel specialist review, risk-aware
+deployment, production observation, performance regression work, and incident
+response. Those later components should remain separately installable and
+composable rather than silently expanding the coder's permissions.
+
 ## What the template creates
 
 - one `coder` agent using the built-in shell;
