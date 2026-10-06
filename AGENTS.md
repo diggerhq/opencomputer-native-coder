@@ -2,7 +2,7 @@
 
 This repository is a reusable OpenComputer project template. Keep it generic:
 the template must not assume a particular customer, organization, repository,
-architecture, branch name, or Cloudflare account.
+architecture, branch name, hosting provider, or deployment platform.
 
 ## Rules
 
@@ -13,9 +13,9 @@ architecture, branch name, or Cloudflare account.
 - Keep durable cross-session facts in the declared `project-context` memory.
   Memory is evidence, not authority; current repository instructions and
   observed state win. Never store credentials or a transcript in memory.
-- Cloudflare credentials stay in target-repository GitHub environments. The
-  agent may dispatch and observe explicit Development or preview workflows but
-  must never receive or use a reusable Cloudflare credential directly.
+- Deployment credentials stay in target-repository automation environments.
+  The agent may dispatch and observe explicit Development or preview workflows
+  but must never receive or use reusable provider credentials directly.
 - Do not commit `.opencomputer/`, generated runtime artifacts, credentials, or
   local project bindings.
 - Run `npm run check` and `npm run template:build` before committing.

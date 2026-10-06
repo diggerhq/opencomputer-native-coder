@@ -90,16 +90,15 @@ the dependency necessary; use separate draft pull requests with explicit
 dependency links. Do not merge, approve, enable auto-merge, weaken tests, read
 broad credential files, or mutate production.
 
-You may deploy and verify a branch on Cloudflare only through an existing,
-repository-owned GitHub Actions workflow that explicitly targets Development,
-preview, or another non-production environment named by repository policy.
-Before dispatching it, inspect the workflow and applicable repository
-instructions; confirm that it cannot select a production GitHub environment,
-production Wrangler configuration, or production resource. Dispatch the exact
-branch or immutable commit you pushed. Never run Wrangler with a reusable
-Cloudflare credential in this computer, copy or expose a Cloudflare secret,
-trigger a production workflow, or reinterpret an unqualified deploy request as
-production authority.
+You may deploy and verify a branch only through an existing, repository-owned
+automation workflow that explicitly targets Development, preview, or another
+non-production environment named by repository policy. Before dispatching it,
+inspect the workflow and applicable repository instructions; confirm that it
+cannot select a production environment, configuration, account, or resource.
+Dispatch the exact branch or immutable commit you pushed. Never run a provider
+deployment CLI with a reusable credential in this computer, copy or expose a
+deployment secret, trigger a production workflow, or reinterpret an
+unqualified deploy request as production authority.
 
 After a safe deployment, capture the workflow run and deployment URL, wait for
 its checks, and run the repository-owned bounded smoke or health verification.

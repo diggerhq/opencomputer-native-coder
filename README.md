@@ -3,14 +3,14 @@
 A reusable OpenComputer template for a long-running coding agent. It works in
 the GitHub repositories selected during installation, retains concise project
 context across sessions, opens draft pull requests, and can verify branches
-through repository-owned Cloudflare Development or preview workflows.
+through repository-owned Development or preview workflows.
 
 [Create this project in OpenComputer](https://app.opencomputer.dev/new?repository-url=https%3A%2F%2Fgithub.com%2Fdiggerhq%2Fopencomputer-native-coder)
 
 The implementation is intentionally native and small. OpenComputer supplies
 the coding harness, durable computer and sessions, memory tools, short-lived
 GitHub credentials, and optional Slack routing. This project does not add a
-custom receiver, queue, GitHub wrapper, agent loop, or Cloudflare credential.
+custom receiver, queue, GitHub wrapper, agent loop, or deployment credential.
 
 ## The OpenComputer agent series
 
@@ -50,7 +50,7 @@ composable rather than silently expanding the coder's permissions.
 - one `coder` agent using the built-in shell;
 - a managed GitHub App connection scoped by the repositories you select;
 - a 16 KiB `project-context` document-memory resource; and
-- policy for changes, draft pull requests, non-production Cloudflare deploys,
+- policy for changes, draft pull requests, non-production deployments,
   smoke checks, iteration, and evidence-based reporting.
 
 Repository selection is the hard access boundary. The agent discovers project
@@ -123,22 +123,22 @@ npm run opencomputer -- github connect --environment development
 The one-shot deploy advances Development and exits. No local process needs to
 remain running.
 
-## Cloudflare verification contract
+## Deployment verification contract
 
 The agent can close the loop only when a target repository already provides a
 GitHub Actions workflow for an explicitly named Development or preview target.
 That workflow should:
 
 - name Development or preview in both its UI and configuration;
-- be unable to select a Production environment or Production Wrangler config;
+- be unable to select a Production environment or Production configuration;
 - accept an exact branch or immutable commit;
 - emit the deployment URL and run a bounded smoke or health check; and
-- use GitHub environment protection and narrowly scoped Cloudflare credentials.
+- use environment protection and narrowly scoped deployment credentials.
 
 The agent inspects that contract before dispatch, observes the workflow run,
 records the URL, runs the repository-owned verification, and can fix its branch
 and repeat. If the contract or required credentials are missing, it reports
-the missing capability instead of gaining direct Cloudflare access.
+the missing capability instead of gaining direct provider access.
 
 ## Try it
 
@@ -152,7 +152,7 @@ Then request a bounded change:
 
 > Fix the selected issue on a new branch, add focused tests, run the relevant
 > checks, and open a draft PR. If the repository has an explicitly
-> non-production Cloudflare workflow, deploy this exact branch there, run its
+> non-production deployment workflow, deploy this exact branch there, run its
 > smoke check, and improve the branch until it passes. Do not deploy Production
 > or merge.
 
@@ -161,8 +161,8 @@ Then request a bounded change:
 - GitHub repository selection limits which repositories are reachable.
 - The agent may execute repository code in its isolated computer; treat it as
   untrusted.
-- Cloudflare credentials remain in repository-owned GitHub environments and
-  never enter the agent computer or memory.
+- Deployment credentials remain in repository-owned automation environments
+  and never enter the agent computer or memory.
 - The agent never deploys or mutates Production without a separately named and
   explicitly authorized target.
 - Slack identity is not automatically mapped to GitHub ACLs. Restrict who can
