@@ -1,0 +1,24 @@
+{
+  "name": "opencomputer-rufus",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "deploy": "opencomputer deploy",
+    "doctor": "opencomputer doctor --json",
+    "typecheck": "tsc --noEmit",
+    "check": "npm run typecheck && npm run doctor",
+    "opencomputer": "opencomputer"
+  },
+  "dependencies": {
+    "@opencomputer/agent": "0.7.5"
+  },
+  "devDependencies": {
+    "@opencomputer/cli": "0.7.14",
+    "@types/node": "^24.0.0",
+    "typescript": "^5.9.0"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  }
+}
