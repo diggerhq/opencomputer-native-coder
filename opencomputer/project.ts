@@ -1,4 +1,4 @@
 export default {
-  name: "Durable Coder",
+  name: "OpenComputer Coder",
   agents: ["coder"],
 };

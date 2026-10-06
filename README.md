@@ -1,4 +1,4 @@
-# Durable Cloudflare Coder
+# OpenComputer Coder
 
 A reusable OpenComputer template for a long-running coding agent. It works in
 the GitHub repositories selected during installation, retains concise project

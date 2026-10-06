@@ -1,4 +1,4 @@
-# Durable Cloudflare Coder template
+# OpenComputer Coder template
 
 This repository is a reusable OpenComputer project template. Keep it generic:
 the template must not assume a particular customer, organization, repository,
